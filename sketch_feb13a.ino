@@ -51,21 +51,21 @@ void handleNewMessages(int numNewMessages) {
 void setup() {
   Serial.begin(115200);
 
-  // PIR Motion Sensor mode INPUT_PULLUP
+  
   pinMode(motionSensor, INPUT_PULLUP);
   pinMode(led_alarma, OUTPUT);
   pinMode(led_funcionamiento, OUTPUT);
   digitalWrite(led_funcionamiento, HIGH);
-  // Set motionSensor pin as interrupt, assign interrupt function and set RISING mode
+ 
   attachInterrupt(digitalPinToInterrupt(motionSensor), detectsMovement, RISING);
 
-  // Attempt to connect to Wifi network:
+ :
   Serial.print("Connecting Wifi: ");
   Serial.println(ssid);
 
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  client.setCACert(TELEGRAM_CERTIFICATE_ROOT);  // Add root certificate for api.telegram.org
+  client.setCACert(TELEGRAM_CERTIFICATE_ROOT);
 
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
